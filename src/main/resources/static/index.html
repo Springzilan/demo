@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+这是index
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<button style="display: block;margin: 20px auto;width: 160px;height: 60px;" onclick="getAll()">查看院系信息</button>
+<div class="result" id="result"></div>
+<script>
+    function getAll(){
+        $.ajax({
+            type: "get",
+            url: "user/selectAll",
+            data: {
+            },
+            success:function (data) {
+                console.log(data)
+                $("#result").empty()
+                for(var i = 0;i < data.length;i++){
+                    $("#result").append(JSON.stringify(data[i]) + "<br>")
+                }
+            },
+        });
+    }
+</script>
+</body>
+</html>
